@@ -1,1 +1,25 @@
+@use 'src/styles/vars';
 
+.review__ratings {
+  width: 95%;
+  height: 3rem;
+  display: flex;
+  justify-content: space-between;
+
+  &__btn {
+    height: 3rem;
+    width: 3rem;
+    font-weight: vars.$fw-bold;
+    border: none;
+    border-radius: 1.5rem;
+    background-color: vars.$dark-blue;
+    color: vars.$light-grey;
+    transition: all 0.2s ease-in-out;
+    
+    &:hover {
+      background-color: vars.$light-grey;
+      color: vars.$white;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
