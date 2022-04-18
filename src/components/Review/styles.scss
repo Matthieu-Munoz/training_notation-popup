@@ -16,16 +16,16 @@
     justify-content: space-between;
     flex-direction: column;
     align-items: center;
-    height: 80%;
-    width: 95%;
+    height: 100%;
+    position: relative;
   }
 
   &__header {
     align-self: start;
-    height: 5%;
 
     &__icon {
       background-color: vars.$dark-blue;
+      color: vars.$accentColor;
       width: 48px;
       height: 48px;
       border-radius: 2em;
@@ -34,8 +34,7 @@
   }
 
   &__content {
-    margin-top: auto;
-    margin-bottom: 2rem;
+    margin: auto;
 
     &__title {
       color: vars.$white;

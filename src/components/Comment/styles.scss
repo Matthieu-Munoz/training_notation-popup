@@ -1,1 +1,47 @@
+@use 'src/styles/vars';
 
+.review__comment {
+  width: 95%;
+  margin: auto;
+  margin-bottom: 0.5em;
+
+  &__input {
+    max-height: 100%;
+    height: 100%;
+    width: 100%;
+    background-color: vars.$light-grey;
+    padding: 1em;
+    padding-right: 2em;
+    color: vars.$very-dark-blue;
+    font-size: 14px;
+    border: none;
+    border-radius: 0.5rem;
+    outline: none;
+    resize: none;
+    -ms-overflow-style: none;
+    scrollbar-color: grey transparent;
+    scrollbar-width: thin;
+
+    &::placeholder {
+      color: vars.$very-dark-blue;
+      opacity: 0.8;
+    }
+
+    &::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar {
+      width: 6px;
+      background-color: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      box-shadow: inset 0 0 5px rgba(0, 0, 0, .3);
+      background-color: grey;
+    }
+  }
+}

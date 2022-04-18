@@ -1,0 +1,45 @@
+@use 'src/styles/vars';
+
+.review__succes {
+  &__icon {
+    position: absolute;
+    left: 0;
+    background-color: vars.$dark-blue;
+    width: 48px;
+    height: 48px;
+    border-radius: 2em;
+    padding: 0.9em;
+    color: vars.$white;
+
+    &:hover {
+      background-color: vars.$accentColor;
+
+    }
+  }
+
+  &__img {
+    width: 60%;
+    margin: 1em;
+  }
+
+  &__rate {
+    background-color: vars.$dark-blue;
+    color: vars.$accentColor;
+    border-radius: 2em;
+    padding: 0.6em 1.5em;
+    line-height: 1em;
+    margin: 0.5em;
+  }
+
+  &__title {
+    color: vars.$white;
+    font-size: 2em;
+    margin: 0.5em 0 0.4em 0;
+    text-align: center;
+  }
+
+  &__text {
+    color: vars.$light-grey;
+    text-align: center;
+  }
+}
