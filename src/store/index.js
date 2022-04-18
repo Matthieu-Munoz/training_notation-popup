@@ -5,7 +5,7 @@ import reducer from 'src/reducers';
 import debugMiddleWare from 'src/middlewares/debug';
 import submitReviewMiddleWare from 'src/middlewares/submitReview';
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
 
 const store = createStore(
   reducer,
