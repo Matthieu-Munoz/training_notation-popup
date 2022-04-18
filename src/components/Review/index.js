@@ -13,8 +13,14 @@ import Succes from '../Succes';
 // == Composant
 function Review() {
   const commentIsOpen = useSelector((state) => state.comment.isOpen);
+  const rate = useSelector((state) => state.rate);
   const rewiewSent = useSelector((state) => state.rewiewSent);
   const dispatch = useDispatch();
+  function handleSubmit() {
+    if (rate !== 0) {
+      dispatch(submitReview());
+    }
+  }
   return (
     <div className="review">
       <div className="review--content">
@@ -31,7 +37,7 @@ function Review() {
               </div>
               <Ratings />
               {commentIsOpen && <Comment />}
-              <button className="review__submit" type="button" onClick={() => dispatch(submitReview())}>Envoyer</button>
+              <button className="review__submit" type="button" onClick={() => handleSubmit()}>Envoyer</button>
             </>
           )}
       </div>
