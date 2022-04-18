@@ -1,19 +1,21 @@
-# Front-end Style Guide
+# Style Guide
 
 ## Layout
 
-The designs were created to the following widths:
+Les dimensions du composant principal sont :
 
-- Mobile: 375px
-- Desktop: 1440px
+  max-width: 412px;
+  min-height: 416px;
 
 ## Colors
 
-### Primary
+### Couleur d'accentuation
 
-- Orange: hsl(25, 97%, 53%)
+- Vert: hsl(144, 29%, 43%);
 
-### Neutral
+Couleur variable à l'appréciation
+
+### Autres
 
 - White: hsl(0, 0%, 100%)
 - Light Grey: hsl(217, 12%, 63%)
@@ -21,11 +23,10 @@ The designs were created to the following widths:
 - Dark Blue: hsl(213, 19%, 18%)
 - Very Dark Blue: hsl(216, 12%, 8%)
 
-## Typography
+Couleurs et répartition du Gradient : hsl(215, 20%, 17%) 0%, hsl(216, 24%, 12%) 100%;
+Propriété du gradient radial-gradient(ellipse at top, $gradientColor);
 
-### Body Copy
-
-- Font size (paragraph): 15px
+## Typographie
 
 ### Font
 
