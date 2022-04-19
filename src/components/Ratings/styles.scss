@@ -30,10 +30,29 @@
     &--selected {
       background-color: vars.$green;
       color: vars.$white;
+      animation: selectGrow 0.5s 1;
+
+      &:hover {
+        background-color: vars.$green;
+      }
     }
 
     &--comment {
       font-size: 1.5em;
     }
+  }
+}
+
+@keyframes selectGrow {
+  0% {
+    transform: scale(1.05);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+
+  100% {
+    transform: scale(1.05);
   }
 }

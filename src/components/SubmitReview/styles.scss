@@ -46,5 +46,20 @@
       color: vars.$accentColor;
       transition: all 0.2s ease-in-out;
     }
+
+    &--error,
+    &--error:hover {
+      animation: showError 3s 1;
+    }
   }
+}
+
+@keyframes showError {
+
+  50% {
+    background-color: salmon;
+    color: vars.$white;
+    transform: scale(1);
+  }
+
 }
