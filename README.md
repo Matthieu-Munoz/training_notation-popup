@@ -64,7 +64,8 @@ Les ressources à pointer sont :
   - react-icons => Donne accès à PLEIN d'icônes très facilement, [à consulter](https://react-icons.github.io/react-icons/)
   - react-tooltip => Permet d'afficher et de paramétrer des petits tooltip très facilement. [doc](https://github.com/wwayne/react-tooltip#readme) et [demo](https://wwayne.github.io/react-tooltip/)
   - react, react-dom, react-redux, redux, prop-types" => Pour des raisons évidentes
-- La branche *solution-matthieu* contenant une solution possible
+- La branche *intégration-HTML/SCSS* contenant une intégration "brut" possible dans le composant principal.
+- La branche *solution-matthieu* contenant une solution complete possible
 
 ### Délimitation des composants et structuration de /src
 
@@ -153,6 +154,29 @@ Nous aurons besoin d'un dossier store, reducers, actions et un dernier dossier m
   ```
 
 </details>
+
+### "Par où je commence ?"
+
+C'est LA question que l'on se pose tous au démarrage d'un projet...
+Tout va dépendre de votre confort en HTML/JSX et CSS.
+Par exemple, il est tout à fait envisageable de commencer par travailler dans le fichier [index.js](./src/components/App/index.js) du composant principal ainsi que l'[index.scss](./src/styles/index.scss), y réaliser l'intégralité de l'intégration (sans les interactions JS) avant de venir tout découper dans les bons composants.
+C'est d'ailleurs la démarche que je vous conseille pour commencer et que j'expliquerai ensuite.
+Une autre approche, bien plus rapide mais qui demande beaucoup de rigueur et une compréhension assez avancée du chemin à prendre et de directement coder dans les composants et fichier scss correspondant. L'idée là, c'est d'aller de l'extérieur le plus global vers l'intérieur progressivement.
+
+### HTML/SCSS
+
+C'est partie pour l'intégration !!!
+La première étape que je conseille c'est de consulter la charte graphique ou les docs objectifs pour vraiment prendre conscience du projet. Ici on à en racine du repo un fichier [style-guide](./style-guide.md) contenant un guide pour le style à suivre. On commence donc pas copier son contenu dans [_vars.scss](./src/styles/_vars.scss) pour le reformater en différente variables sass qui seront utilisables à travers tout notre projet.
+
+```scss
+// Exemple possible avec des couleurs
+$rouge-fonce: #8B0000;
+$rouge-clair: #DC143C;
+// ainsi que l'signation à d'autre variable
+$accentColor: $rouge-clair;
+$backgroudColor: $rouge-fonce;
+// Comme ça, si un jour le besoin de changer la couleur de fond se présente on change tout ici et pas dans CHAQUE fichié où il est utilisé.
+```
 
 ### Bonus
 
