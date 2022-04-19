@@ -9,7 +9,7 @@ Voici un exercice inspiré d'un challenge [Frontend Mentor](https://www.frontend
 
 **Pour réaliser cet exercice, vous aurez besoin de connaissances de base en HTML, CSS ( SCSS ) et JavaScript ( React ).**
 
-## C'est partie :
+## C'est parti :
 
 Voici ma version de cet exercice
 
