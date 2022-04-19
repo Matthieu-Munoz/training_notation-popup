@@ -7,7 +7,8 @@ body {
   font-weight: vars.$fw-classic;
   line-height: 1.6em;
 }
-#root{
+
+#root {
   display: grid;
   place-content: center;
   height: 100vh;
@@ -15,14 +16,109 @@ body {
   background-color: vars.$very-dark-blue;
 }
 
-/* 
-  // or you can import your own font
-  @font-face {
-    font-family: 'Roboto';
-    src: url('../assets/fonts/Roboto-Regular.ttf');
+.review {
+  max-width: 412px;
+  min-height: 416px;
+  background: vars.$gradient;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  border-radius: 2rem;
+
+  &--content {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    position: relative;
   }
 
-  body {
-    font-family: 'Roboto', sans-serif;
+  &__header {
+    align-self: start;
+
+    &__icon {
+      background-color: vars.$dark-blue;
+      color: vars.$accentColor;
+      width: 48px;
+      height: 48px;
+      border-radius: 2em;
+      padding: 0.9em;
+    }
   }
-*/
+
+  &__content {
+    margin: auto;
+
+    &__title {
+      color: vars.$white;
+      font-weight: vars.$fw-bold;
+      font-size: 1.5em;
+      line-height: 2em;
+    }
+
+    &__text {
+      color: vars.$light-grey;
+    }
+  }
+
+  &__submit {
+    width: 95%;
+    height: 3rem;
+    background-color: vars.$accentColor;
+    color: vars.$white;
+    border: none;
+    border-radius: 2em;
+    font-weight: vars.$fw-bold;
+    letter-spacing: 0.15em;
+    font-size: 1.1em;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: vars.$white;
+      color: vars.$accentColor;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  .review__ratings {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto;
+    margin-bottom: 1rem;
+
+    &__btn {
+      height: 3rem;
+      width: 3rem;
+      display: grid;
+      place-content: center;
+      font-weight: vars.$fw-bold;
+      border: none;
+      border-radius: 1.5rem;
+      background-color: vars.$dark-blue;
+      color: vars.$light-grey;
+      transition: all 0.2s ease-in-out;
+
+      &:hover {
+        background-color: vars.$light-grey;
+        color: vars.$white;
+        transform: scale(1.05);
+        transition: all 0.2s ease-in-out;
+
+      }
+
+      &--selected {
+        background-color: vars.$green;
+        color: vars.$white;
+      }
+
+      &--comment {
+        font-size: 1.5em;
+      }
+    }
+  }
+
+}
