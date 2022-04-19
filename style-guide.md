@@ -32,3 +32,9 @@ Propriété du gradient radial-gradient(ellipse at top, $gradientColor);
 
 - Family: [Overpass](https://fonts.google.com/specimen/Overpass)
 - Weights: 400, 700
+  
+### Icons
+
+- BiCommentAdd - Pour le bouton commentaire
+- AiFillStar - Pour la petite étoile
+- AiOutlineClose - Pour le bouton de retour après succes
