@@ -11,7 +11,7 @@ Voici un exercice inspiré d'un challenge [Frontend Mentor](https://www.frontend
 
 ## C'est partie :
 
-Cette exercice pourra vous être utile sur plusieurs projets ! 
+Cette exercice pourra vous être utile sur plusieurs projets !
 
 En effet, imaginons ce petit composant d'envoi d'avis sur un site, il sera accessible sous forme de popup par l'appui sur un bouton ou un événement déclencheur comme un bouton ou autre. L'utilisateur pourra ainsi envoyer son avis sous forme de note sur cinq avec l'option d'ajouter aussi un court message.
 
@@ -50,5 +50,25 @@ Les ressources à pointer sont :
 - Ce README
 - le fichier [style-guide](./style-guide.md)
 - les images du dossier doc/design
+- La branche *solution-matthieu* contenant une solution possible
+
+### Délimitation des composants et structuration de /src
+
+Nous allons réaliser ce projet en utilisant le couple React-Redux. De ce fait une architecture de dossier s'impose.
+COmmencons par lister les composants globaux de notre exercice. Pour cela il faut comprendre qu'est-ce qui nécéssite la création d'un composant ou non.
+Une approche possible est de divisé l'app en composant par zone "graphique"/sémantique. On peut aussi découper en composant par éléments répété ou avec un contenue dynamique. Par exemple un bouton qu'on retrouve à plusieurs endroit dans notre intégration pourrait être un composant, une zone qui utilise des données du state pourrait aussi être un composant.
+En bref, on pourrait faire un composant pour un peu tout et n'importe quoi, c'est donc à vous de trouver votre découpage, celui qui vous convient !
+De plus, le premier découpe n'est qu'indicatif et peut tout à fait évoluer au fur est à mesure que le projet avance.
+
+<details>
+  <summary>Découpage proposé par Matthieu</summary>
+  
+  Spoiler text. Note that it's important to have a space after the summary tag. You should be able to write any markdown you want inside the `<details>` tag... just make sure you close `<details>` afterward.
+  
+  ```javascript
+  console.log("I'm a code block!");
+  ```
+  
+</details>
 
 **Team Apollo** 🚀
