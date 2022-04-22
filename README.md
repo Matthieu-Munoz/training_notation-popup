@@ -66,7 +66,7 @@ Les ressources à pointer sont :
   - react-tooltip => Permet d'afficher et de paramétrer des petits tooltip très facilement. [doc](https://github.com/wwayne/react-tooltip#readme) et [demo](https://wwayne.github.io/react-tooltip/)
   - react, react-dom, react-redux, redux, prop-types" => Pour des raisons évidentes
 - La branche *intégration-HTML/SCSS* contenant une intégration "brut" possible dans le composant principal.
-- La branche *solution-matthieu* contenant une solution complete possible
+- La branche *solution-matthieu* contenant une solution complète possible
 
 ### 2. "Par où je commence ?"
 
@@ -88,10 +88,10 @@ La première étape que je conseille c'est de consulter la charte graphique ou l
 // Exemple possible avec des couleurs
 $rouge-fonce: #8B0000;
 $rouge-clair: #DC143C;
-// ainsi que l'signation à d'autre variable
+// ainsi que l'assignation à d'autre variable
 $accentColor: $rouge-clair;
 $backgroudColor: $rouge-fonce;
-// Comme ça, si un jour le besoin de changer la couleur de fond se présente on change tout ici et pas dans CHAQUE fichié où il est utilisé.
+// Comme ça, si un jour le besoin de changer la couleur de fond se présente on change tout ici et pas dans CHAQUE fichier où il est utilisé.
 ```
 
 Libre à vous de jouer avec les couleurs !
@@ -122,8 +122,9 @@ Libre à vous de jouer avec les couleurs !
 On continue ensuite avec la mise en place de notre scss de base, celui qui englobe tout : [index.scss](./src/styles/index.scss)
 Cette feuille de style fait référence directe au fichier [index.html](./src/assets/index.html) et sera commun sur toute l'app. On va donc y mettre les styles de fond qui seront vrais partout.
 Ici deux éléments à styliser : body et #root.
-On appliquera au body les propriétés de fond (sans oublier de les inclure à l'index.html de assets) et à #root un arrière-plan, une taille correspondante à la fenêtre et un centrage de ses éléments au centre.
-On obtient donc une page complètement grise (couleur de l'arrière-plan)
+On appliquera au body les propriétés de polices (sans oublier de les inclure à l'index.html de assets) et à #root un arrière-plan, une taille correspondante à la fenêtre et un centrage de ses éléments au centre.
+
+On obtient donc une page complètement grise (couleur de l'arrière-plan) et prête à recevoir notre composant App.
 
 <details>
   <summary>Solution possible pour le fichier index.scss</summary>
@@ -154,6 +155,7 @@ On obtient donc une page complètement grise (couleur de l'arrière-plan)
 
 Nous allons pour le moment travailler dans le composant App. Libre à vous de le renommer à souhait.
 On veut construire toute la structure HTML de notre "popup" dans [son état au chargement](./doc/design/1.%20Desktop.png).
+
 Un peu de préparation, prenez l'image fournie et poser dans votre tête ou sur papier la structure globale qu'aura votre html (éléments parent/enfant etc).
 Pour cela ou peut faire une schématisation par boite, chaque boite représente un élément, dans ces boites on peut en mettre d'autre qui représente leurs enfants.
 
@@ -163,12 +165,13 @@ Pour cela ou peut faire une schématisation par boite, chaque boite représente 
   ![](./doc/structure_schema/HTML.png)
 
   Avec un schéma comme celui-ci on devine très facilement à quoi ressemblera notre html. On voit même déjà apparaitre certaines propriétés CSS !
-  Par exemple, l'élément global aura surement un ```display: flex;``` en colonne, de même celui des boutons de note un ```display: flex;``` et une répartition sur la longueur.
+  Par exemple, l'élément global aura surement un `display: flex;` en colonne, de même celui des boutons de note un `display: flex;` et une répartition sur la longueur.
   
 </details>
 
 Une fois cette préparation effectuée, on se lance.
-On créait chaque élément html au bon endroit et on leur attribue une class. Le mieux c'est d'utiliser une convention BEM pour le nommage des class.
+On créait chaque élément html au bon endroit et on leur attribue une class. Le mieux c'est d'utiliser la convention BEM pour le nommage des class. Cela nous facilitera grandement la vie pour la mise en style Sass.
+
 Cette convention peut faire peur, voici un petit recap de comment l'utiliser :
 
 - Chaque class prend la class de son parent séparé d'un '__'
@@ -343,18 +346,21 @@ Nous allons réaliser ce projet en utilisant le couple React-Redux. De ce fait u
 Commençons par lister les composants globaux de notre exercice. Pour cela il faut comprendre qu'est-ce qui nécessite la création d'un composant ou non.
 Une approche possible est de diviser l'app en composant par zone "graphique"/sémantique. On peut aussi découper en composant par éléments répétés ou avec un contenu dynamique. Par exemple, un bouton que l'on retrouve à plusieurs endroits dans notre intégration pourrait être un composant, une zone qui utilise des données du state pourrait aussi être un composant.
 En bref, on serait capable de faire un composant pour un peu tout et n'importe quoi, c'est donc à vous de trouver votre découpage, celui qui vous convient.
-De plus, la première découpe n'est qu'indicatif et peut tout à fait évoluer au fur est à mesure que le projet avance.
+
+*De plus, la première découpe n'est qu'indicatif et peut tout à fait évoluer au fur est à mesure que le projet avance.*
 
 <details>
   <summary>Possibilité de découpage des composants</summary>
-  J'ai choisi découper cette app en 4 composants :
-  ![](./doc/structure_schema/React.png)
+
+J'ai choisi découper cette app en 4 composants :
   
 - Un composant principal - *App* - qui se charge d'afficher soit l'interface de notage soit le message de succes
 - Le composant - *Review* - qui gère l'interface de notage
 - Le sous-composant - *Ratings* - qui s'occupe des boutons de note ainsi que celui de commentaire
 - Un composant - *Comment* - permettant l'affichage d'un textarea pour laisser un commentaire en plus d'une note
 - Et enfin le composant - *Succes* - qui affiche le message de succès.
+  
+ ![Schéma React](./doc/structure_schema/React.png)
 
   ```bash
     ├── components
@@ -381,7 +387,7 @@ Une fois les composants posés, on peut commencer la structure de notre projet R
 Nous aurons besoin d'un dossier store, reducers, actions et un dernier dossier middlewares.
 
 <details>
-  <summary>Découpage complet</summary>
+  <summary>Architecture de src complète</summary>
   
   ```bash
     src
