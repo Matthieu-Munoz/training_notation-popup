@@ -2,10 +2,10 @@
 import './styles.scss';
 
 // == Composant
-function Review() {
+function App() {
   return (
-    <div className="review">
-      <div className="review--content">
+    <div className="app">
+      <div className="review">
         <header className="review__header">
           <div className="review__header__icon" />
         </header>
@@ -31,4 +31,4 @@ function Review() {
 }
 
 // == Export
-export default Review;
+export default App;
