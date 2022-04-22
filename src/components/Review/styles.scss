@@ -1,23 +1,50 @@
 @use 'src/styles/vars';
 
 .review {
-  max-width: 412px;
-  min-height: 416px;
-  background: vars.$gradient;
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem;
-  border-radius: 2rem;
+  &__header {
+    align-self: start;
 
-  &--content {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    align-items: center;
-    height: 100%;
-    position: relative;
+    &__icon {
+      background-color: vars.$dark-blue;
+      color: vars.$accentColor;
+      width: 48px;
+      height: 48px;
+      border-radius: 2em;
+      padding: 0.9em;
+    }
   }
 
+  &__content {
+    margin: auto;
+
+    &__title {
+      color: vars.$white;
+      font-weight: vars.$fw-bold;
+      font-size: 1.5em;
+      line-height: 2em;
+    }
+
+    &__text {
+      color: vars.$light-grey;
+    }
+  }
+
+  &__submit {
+    width: 95%;
+    height: 3rem;
+    background-color: vars.$accentColor;
+    color: vars.$white;
+    border: none;
+    border-radius: 2em;
+    font-weight: vars.$fw-bold;
+    letter-spacing: 0.15em;
+    font-size: 1.1em;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background-color: vars.$white;
+      color: vars.$accentColor;
+      transition: all 0.2s ease-in-out;
+    }
+  }
 }
