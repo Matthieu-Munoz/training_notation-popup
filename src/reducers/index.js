@@ -2,6 +2,7 @@ import {
   SELECT_RATING,
   TOGGLE_COMMENT,
   INPUT_COMMENT,
+  TOGGLE_ERROR,
   SWITCH_SUCCES,
   GO_BACK,
 } from '../actions';
@@ -9,6 +10,7 @@ import {
 const initialState = {
   rewiewSent: false,
   rate: 0,
+  error: false,
   comment: {
     isOpen: false,
     value: '',
@@ -21,6 +23,8 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         rate: action.value,
+        error: false,
+
       };
     case TOGGLE_COMMENT:
       return {
@@ -37,6 +41,11 @@ function reducer(state = initialState, action = {}) {
           ...state.comment,
           value: action.value,
         },
+      };
+    case TOGGLE_ERROR:
+      return {
+        ...state,
+        error: action.value,
       };
     case SWITCH_SUCCES:
       return {

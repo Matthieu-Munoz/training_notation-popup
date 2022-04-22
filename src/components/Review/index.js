@@ -3,19 +3,27 @@ import './styles.scss';
 // Composant
 import { useSelector, useDispatch } from 'react-redux';
 import { AiFillStar } from 'react-icons/ai';
+import ReactTooltip from 'react-tooltip';
+import classNames from 'classnames';
 import Ratings from '../Ratings';
 import Comment from '../Comment';
-import { submitReview } from '../../actions';
+
+import { submitReview, toggleError } from '../../actions';
 
 // == Composant
 function Review() {
   const commentIsOpen = useSelector((state) => state.comment.isOpen);
   const rate = useSelector((state) => state.rate);
+  const errorState = useSelector((state) => state.error);
+  const buttonClass = classNames('review__submit', { 'review__submit--error': (errorState) });
+  const toolTip = classNames('', { 'Merci de séléctionner une note': (errorState) });
   const dispatch = useDispatch();
+
   function handleSubmit() {
     if (rate !== 0) {
-      dispatch(submitReview());
+      return dispatch(submitReview());
     }
+    return dispatch(toggleError(true));
   }
   return (
     <>
@@ -28,7 +36,8 @@ function Review() {
       </div>
       <Ratings />
       {commentIsOpen && <Comment />}
-      <button className="review__submit" type="button" onClick={() => handleSubmit()}>Envoyer</button>
+      <ReactTooltip place="right" effect="solid" type="error" />
+      <button className={buttonClass} data-tip={toolTip} type="button" onClick={() => handleSubmit()}>Envoyer</button>
     </>
   );
 }

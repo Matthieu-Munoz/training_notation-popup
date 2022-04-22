@@ -29,3 +29,9 @@ export const GO_BACK = 'GO_BACK';
 export const goBack = () => ({
   type: GO_BACK,
 });
+
+export const TOGGLE_ERROR = 'TOGGLE_ERROR';
+export const toggleError = (value) => ({
+  type: TOGGLE_ERROR,
+  value,
+});
