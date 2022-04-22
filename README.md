@@ -1,7 +1,7 @@
 # Entrainement — Popup de notation
 
 ![Design preview](./doc/design/1.%20Desktop.png)
-#### **[Demo Live](https://matthieu-munoz.github.io/training_self-review/)**
+### **[Demo Live](https://matthieu-munoz.github.io/training_self-review/)**
 
 ## Bienvenue ! 👋
 
@@ -9,7 +9,7 @@ Voici un exercice inspiré d'un challenge [Frontend Mentor](https://www.frontend
 
 **Pour réaliser cet exercice, vous aurez besoin de connaissances de base en HTML, CSS ( SCSS ) et JavaScript ( React ).**
 
-## C'est parti :
+## "Tu me notes combien ?" :
 
 Cet exercice pourra vous être utile sur plusieurs projets !
 
@@ -50,7 +50,7 @@ Il vous reste dons à :
 
 ## Pas à pas
 
-### Prise en main de l'exercice
+### 1. Prise en main de l'exercice
 
 On commence par parcourir l'environnement de travail, les divers dossiers/fichiers déjà en place.
 Les ressources à pointer sont :
@@ -67,7 +67,7 @@ Les ressources à pointer sont :
 - La branche *intégration-HTML/SCSS* contenant une intégration "brut" possible dans le composant principal.
 - La branche *solution-matthieu* contenant une solution complete possible
 
-### Délimitation des composants et structuration de /src
+### 2. Délimitation des composants et structuration de /src
 
 Nous allons réaliser ce projet en utilisant le couple React-Redux. De ce fait une architecture de dossier s'impose.
 Commençons par lister les composants globaux de notre exercice. Pour cela il faut comprendre qu'est-ce qui nécessite la création d'un composant ou non.
@@ -155,18 +155,21 @@ Nous aurons besoin d'un dossier store, reducers, actions et un dernier dossier m
 
 </details>
 
-### "Par où je commence ?"
+### 3. "Par où je commence ?"
 
 C'est LA question que l'on se pose tous au démarrage d'un projet...
 Tout va dépendre de votre confort en HTML/JSX et CSS.
 Par exemple, il est tout à fait envisageable de commencer par travailler dans le fichier [index.js](./src/components/App/index.js) du composant principal ainsi que l'[index.scss](./src/styles/index.scss), y réaliser l'intégralité de l'intégration (sans les interactions JS) avant de venir tout découper dans les bons composants.
 C'est d'ailleurs la démarche que je vous conseille pour commencer et que j'expliquerai ensuite.
-Une autre approche, bien plus rapide mais qui demande beaucoup de rigueur et une compréhension assez avancée du chemin à prendre et de directement coder dans les composants et fichier scss correspondant. L'idée là, c'est d'aller de l'extérieur le plus global vers l'intérieur progressivement.
+Une autre approche, bien plus rapide mais qui demande beaucoup de rigueur et une compréhension assez avancée du chemin à prendre; c'est de directement coder dans les composants et fichier scss correspondant. L'idée là, c'est d'aller de l'extérieur le plus global vers l'intérieur progressivement.
 
-### HTML/SCSS
+### 4. HTML/SCSS
 
-C'est partie pour l'intégration !!!
-La première étape que je conseille c'est de consulter la charte graphique ou les docs objectifs pour vraiment prendre conscience du projet. Ici on à en racine du repo un fichier [style-guide](./style-guide.md) contenant un guide pour le style à suivre. On commence donc pas copier son contenu dans [_vars.scss](./src/styles/_vars.scss) pour le reformater en différente variables sass qui seront utilisables à travers tout notre projet.
+C'est parti pour l'intégration !!!
+
+#### 4.1 Direction les [styles "racines"](./src/styles)
+
+La première étape que je conseille c'est de consulter la charte graphique ou les docs objectifs pour vraiment prendre conscience du projet. Ici, on a en racine du repo un fichier [style-guide](./style-guide.md) contenant les styles utilisés pour la demo. On commence donc pas copier son contenu dans [_vars.scss](./src/styles/_vars.scss) pour le reformater en différentes variables sass qui seront utilisables à travers tout notre projet.
 
 ```scss
 // Exemple possible avec des couleurs
@@ -177,6 +180,249 @@ $accentColor: $rouge-clair;
 $backgroudColor: $rouge-fonce;
 // Comme ça, si un jour le besoin de changer la couleur de fond se présente on change tout ici et pas dans CHAQUE fichié où il est utilisé.
 ```
+
+Libre à vous de jouer avec les couleurs !
+
+<details>
+  <summary>Solution possible pour le fichier _Vars.scss</summary>
+
+  ```scss
+  // colors variable
+  $green: hsl(144, 29%, 43%);
+  $white: hsl(0, 0%, 100%);
+  $light-grey: hsl(217, 12%, 63%);
+  $dark-blue: hsl(213, 19%, 18%);
+  $very-dark-blue: hsl(217, 14%, 19%);
+  $gradientColors: hsl(215, 20%, 17%) 0%, hsl(216, 24%, 12%) 100%;
+  // Used throughout the project
+  $accentColor: $green;
+  $gradient: radial-gradient(ellipse at top, $gradientColor);
+
+  // Fonts
+  $font-main: 'Overpass';
+  $fw-classic: 400;
+  $fw-bold: 700;
+  ```
+
+</details>
+
+On continue ensuite avec la mise en place de notre scss de base, celui qui englobe tout : [index.scss](./src/styles/index.scss)
+Cette feuille de style fait référence directe au fichier [index.html](./src/assets/index.html) et sera commun sur toute l'app. On va donc y mettre les styles de fond qui seront vrais partout.
+Ici deux éléments à styliser : body et #root.
+On appliquera au body les propriétés de fond (sans oublier de les inclure à l'index.html de assets) et à #root un arrière-plan, une taille correspondante à la fenêtre et un centrage de ses éléments au centre.
+On obtient donc une page complètement grise (couleur de l'arrière-plan)
+
+<details>
+  <summary>Solution possible pour le fichier index.scss</summary>
+
+  ```scss
+  @use 'reset';
+  @use 'vars';
+
+  body {
+    font-family: vars.$font-main, sans-serif;
+    font-size: 16px;
+    font-weight: vars.$fw-classic;
+    line-height: 1.6em;
+  }
+
+  #root {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    width: 100%;
+    background-color: vars.$very-dark-blue;
+  }
+  ```
+
+</details>
+
+#### 4.2 On ajoute de la forme
+
+Nous allons pour le moment travailler dans le composant App. Libre à vous de le renommer à souhait.
+On veut construire toute la structure HTML de notre "popup" dans [son état au chargement](./doc/design/1.%20Desktop.png).
+Un peu de préparation, prenez l'image fournie et poser dans votre tête ou sur papier la structure globale qu'aura votre html (éléments parent/enfant etc).
+Pour cela ou peut faire une schématisation par boite, chaque boite représente un élément, dans ces boites on peut en mettre d'autre qui représente leurs enfants.
+
+<details>
+  <summary>Schéma proposé</summary>
+
+  ![](./doc/structure_schema/HTML.png)
+
+  Avec un schéma comme celui-ci on devine très facilement à quoi ressemblera notre html. On voit même déjà apparaitre certaines propriétés CSS !
+  Par exemple, l'élément global aura surement un ```display: flex;``` en colonne, de même celui des boutons de note un ```display: flex;``` et une répartition sur la longueur.
+  
+</details>
+
+Une fois cette préparation effectuée, on se lance.
+On créait chaque élément html au bon endroit et on leur attribue une class. Le mieux c'est d'utiliser une convention BEM pour le nommage des class.
+Cette convention peut faire peur, voici un petit recap de comment l'utiliser :
+
+- Chaque class prend la class de son parent séparé d'un '__'
+- Si une class est répété pour une modification on peut mettre un '--' entre
+
+exemple :
+
+```JSX
+  <div className="app">
+    <header className="app__header">
+      <h1 className="app__header__title app__header__title--dark"> Super titre</h1>
+    </header>
+  </div>
+```
+
+Cette notation est assez lourde, on le voit bien là dans l'exemple avec le mot 'app' répété 4 fois !
+Vous pouvez prendre des libertés et tordre un peu la règle à votre avantage.
+L'intégration suivante est disponible sur la branche 'intégration'
+
+<details>
+  <summary>Une structuration possible pour notre app</summary>
+
+  ```JSX
+    <div className="app">
+      <div className="review">
+        <header className="review__header">
+          <div className="review__header__icon" />
+        </header>
+        <div className="review__content">
+          <h2 className="review__content__title">Qu'en avez-vous pensé ?</h2>
+          <p className="review__content__text">Vous pouvez donner votre avis sur ce que vous venez de voir. Tous
+            les commentaires comptent pour m'aider à m'améliorer !
+          </p>
+        </div>
+        <div className="review__ratings">
+          <button type="button" className="review__ratings__btn">1</button>
+          <button type="button" className="review__ratings__btn">2</button>
+          <button type="button" className="review__ratings__btn review__ratings__btn--selected">3</button>
+          <button type="button" className="review__ratings__btn">4</button>
+          <button type="button" className="review__ratings__btn">5</button>
+          <button type="button" className="review__ratings__btn review__ratings__btn--comment">C</button>
+        </div>
+
+        <button className="review__submit" type="button">Envoyer</button>
+      </div>
+    </div>
+  ```
+  
+</details>
+
+<details>
+  <summary>Avec le style correspondant</summary>
+
+  ```sCSS
+    @use 'src/styles/_vars.scss';
+
+    .app {
+      max-width: 412px;
+      min-height: 416px;
+      background: vars.$gradient;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+      border-radius: 2rem;
+
+      .review {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        position: relative;
+
+
+        &__header {
+          align-self: start;
+
+          &__icon {
+            background-color: vars.$dark-blue;
+            color: vars.$accentColor;
+            width: 48px;
+            height: 48px;
+            border-radius: 2em;
+            padding: 0.9em;
+          }
+        }
+
+        &__content {
+          margin: auto;
+
+          &__title {
+            color: vars.$white;
+            font-weight: vars.$fw-bold;
+            font-size: 1.5em;
+            line-height: 2em;
+          }
+
+          &__text {
+            color: vars.$light-grey;
+          }
+        }
+
+        &__submit {
+          width: 95%;
+          height: 3rem;
+          background-color: vars.$accentColor;
+          color: vars.$white;
+          border: none;
+          border-radius: 2em;
+          font-weight: vars.$fw-bold;
+          letter-spacing: 0.15em;
+          font-size: 1.1em;
+          transition: all 0.2s ease-in-out;
+
+          &:hover {
+            background-color: vars.$white;
+            color: vars.$accentColor;
+            transition: all 0.2s ease-in-out;
+          }
+        }
+
+
+        &__ratings {
+          width: 95%;
+          display: flex;
+          justify-content: space-between;
+          margin-top: auto;
+          margin-bottom: 1rem;
+
+          &__btn {
+            height: 3rem;
+            width: 3rem;
+            display: grid;
+            place-content: center;
+            font-weight: vars.$fw-bold;
+            border: none;
+            border-radius: 1.5rem;
+            background-color: vars.$dark-blue;
+            color: vars.$light-grey;
+            transition: all 0.2s ease-in-out;
+
+            &:hover {
+              background-color: vars.$light-grey;
+              color: vars.$white;
+              transform: scale(1.05);
+              transition: all 0.2s ease-in-out;
+
+            }
+
+            &--selected {
+              background-color: vars.$green;
+              color: vars.$white;
+            }
+
+            &--comment {
+              font-size: 1.5em;
+            }
+          }
+        }
+      }
+    }
+
+  ```
+  
+</details>
 
 ### Bonus
 
