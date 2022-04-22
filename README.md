@@ -7,13 +7,13 @@
 
 Voici un exercice inspiré d'un challenge [Frontend Mentor](https://www.frontendmentor.io).
 
-**Pour réaliser cet exercice, vous aurez besoin de connaissances de base en HTML, CSS ( SCSS ) et JavaScript ( React ).**
+**Pour réaliser cet exercice, vous aurez besoin de connaissances de base en HTML, CSS ( SCSS ) et JavaScript ( React/redux ).**
 
 ## "Tu me notes combien ?" :
 
 Cet exercice pourra vous être utile sur plusieurs projets !
 
-En effet, imaginons ce petit composant d'envoi d'avis sur un site, il sera accessible sous forme de popup par l'appui sur un bouton ou un événement déclencheur comme un bouton ou autre. L'utilisateur pourra ainsi envoyer son avis sous forme de note sur cinq avec l'option d'ajouter aussi un court message.
+En effet, imaginons ce petit composant d'envoi d'avis sur votre portfolio, il sera accessible sous forme de popup par l'appui sur un bouton ou un événement déclencheur... L'utilisateur pourra ainsi envoyer son avis sous forme de note sur cinq avec l'option d'ajouter aussi un court message.
 
 Cet exercice est prévu pour guider la réalisation de ce composant avec React et Sass. Libre à vous d'en faire ce que vous voulez !
 
@@ -26,7 +26,8 @@ Cet exercice est prévu pour guider la réalisation de ce composant avec React e
 | ![](./doc/design/3.%20Desktop%20-%20Comments.png) | ![](./doc/design/4.%20Desktop%20-%20Thanks.png) |
 
 Vous trouverez également un fichier `style-guide.md` contenant les informations dont vous aurez besoin, telles que la palette de couleurs et les polices.
-Objectifs : 
+
+Objectifs :
 
 - L'utilisateur doit pouvoir choisir une note entre 1 et 5
   - Une note doit être sélectionnée pour exécuter l'envoi
@@ -59,7 +60,7 @@ Les ressources à pointer sont :
 - le fichier [style-guide](./style-guide.md)
 - les images du dossier doc/design
 - Le fichier package.json pour connaitre les dépendances installées. Je vous aide avec les quelques notables :
-  - classnames => Permet au besoin de conditionner une variable à destination d'un className. Très utile pour des styles différents en fonction d'un état.
+  - classnames => Permet au besoin de conditionner une variable à destination d'un className. Très utile pour des styles différents en fonction d'une class/d'un état.
   - react-autosize-textarea => Permet l'ajout d'un composant textarea "autosizeable". Plus d'infos [ici](https://github.com/buildo/react-autosize-textarea) et [là pour comprendre](https://react-components.buildo.io/#textareaautosize)
   - react-icons => Donne accès à PLEIN d'icônes très facilement, [à consulter](https://react-icons.github.io/react-icons/)
   - react-tooltip => Permet d'afficher et de paramétrer des petits tooltip très facilement. [doc](https://github.com/wwayne/react-tooltip#readme) et [demo](https://wwayne.github.io/react-tooltip/)
@@ -67,95 +68,7 @@ Les ressources à pointer sont :
 - La branche *intégration-HTML/SCSS* contenant une intégration "brut" possible dans le composant principal.
 - La branche *solution-matthieu* contenant une solution complete possible
 
-### 2. Délimitation des composants et structuration de /src
-
-Nous allons réaliser ce projet en utilisant le couple React-Redux. De ce fait une architecture de dossier s'impose.
-Commençons par lister les composants globaux de notre exercice. Pour cela il faut comprendre qu'est-ce qui nécessite la création d'un composant ou non.
-Une approche possible est de diviser l'app en composant par zone "graphique"/sémantique. On peut aussi découper en composant par éléments répétés ou avec un contenu dynamique. Par exemple, un bouton que l'on retrouve à plusieurs endroits dans notre intégration pourrait être un composant, une zone qui utilise des données du state pourrait aussi être un composant.
-En bref, on serait capable de faire un composant pour un peu tout et n'importe quoi, c'est donc à vous de trouver votre découpage, celui qui vous convient.
-De plus, la première découpe n'est qu'indicatif et peut tout à fait évoluer au fur est à mesure que le projet avance.
-
-<details>
-  <summary>Découpage des composants - proposé par Matthieu</summary>
-  J'ai choisi découper cette app en 4 composants :
-
-- Un composant principal - *Review* - qui se charge d'afficher soit l'interface de notage soit le message de succes
-- Le composant - *SubmitReview* - qui gère l'interface de notage
-- Le sous-composant - *Ratings* - qui s'occupe des boutons de note ainsi que celui de commentaire
-- Un composant - *Comment* - permettant l'affichage d'un textarea pour laisser un commentaire en plus d'une note
-- Et enfin le composant - *Succes* - qui affiche le message de succès.
-
-  ```bash
-    ├── components
-    │   ├── Comment
-    │   │   ├── index.js
-    │   │   └── styles.scss
-    │   ├── Ratings
-    │   │   ├── index.js
-    │   │   └── styles.scss
-    │   ├── Review
-    │   │   ├── index.js
-    │   │   └── styles.scss
-    │   ├── SubmitReview
-    │   │   ├── index.js
-    │   │   └── styles.scss
-    │   └── Succes
-    │       ├── index.js
-    │       └── styles.scss
-  ```
-
-</details>
-
-Une fois les composants posés, on peut commencer la structure de notre projet React-Redux.
-Nous aurons besoin d'un dossier store, reducers, actions et un dernier dossier middlewares.
-
-<details>
-  <summary>Découpage complet - proposé par Matthieu</summary>
-  
-  ```bash
-    src
-    ├── actions
-    │   └── index.js
-    ├── assets
-    │   ├── favicon.ico
-    │   ├── fonts
-    │   │   └── Roboto-Regular.ttf
-    │   ├── images
-    │   │   └── done-sent.svg
-    │   └── index.html
-    ├── components
-    │   ├── Comment
-    │   │   ├── index.js
-    │   │   └── styles.scss
-    │   ├── Ratings
-    │   │   ├── index.js
-    │   │   └── styles.scss
-    │   ├── Review
-    │   │   ├── index.js
-    │   │   └── styles.scss
-    │   ├── SubmitReview
-    │   │   ├── index.js
-    │   │   └── styles.scss
-    │   └── Succes
-    │       ├── index.js
-    │       └── styles.scss
-    ├── middlewares
-    │   ├── debug.js
-    │   └── submitReview.js
-    ├── reducers
-    │   └── index.js
-    ├── store
-    │   └── index.js
-    ├── styles
-    │    ├── index.scss
-    │    ├── _reset.css
-    │    └── _vars.scss
-    ├── index.js
-  ```
-
-</details>
-
-### 3. "Par où je commence ?"
+### 2. "Par où je commence ?"
 
 C'est LA question que l'on se pose tous au démarrage d'un projet...
 Tout va dépendre de votre confort en HTML/JSX et CSS.
@@ -163,11 +76,11 @@ Par exemple, il est tout à fait envisageable de commencer par travailler dans l
 C'est d'ailleurs la démarche que je vous conseille pour commencer et que j'expliquerai ensuite.
 Une autre approche, bien plus rapide mais qui demande beaucoup de rigueur et une compréhension assez avancée du chemin à prendre; c'est de directement coder dans les composants et fichier scss correspondant. L'idée là, c'est d'aller de l'extérieur le plus global vers l'intérieur progressivement.
 
-### 4. HTML/SCSS
+### 3. HTML/SCSS
 
 C'est parti pour l'intégration !!!
 
-#### 4.1 Direction les [styles "racines"](./src/styles)
+#### 3.1 Direction les [styles "racines"](./src/styles)
 
 La première étape que je conseille c'est de consulter la charte graphique ou les docs objectifs pour vraiment prendre conscience du projet. Ici, on a en racine du repo un fichier [style-guide](./style-guide.md) contenant les styles utilisés pour la demo. On commence donc pas copier son contenu dans [_vars.scss](./src/styles/_vars.scss) pour le reformater en différentes variables sass qui seront utilisables à travers tout notre projet.
 
@@ -237,7 +150,7 @@ On obtient donc une page complètement grise (couleur de l'arrière-plan)
 
 </details>
 
-#### 4.2 On ajoute de la forme
+#### 3.2 On ajoute de la forme
 
 Nous allons pour le moment travailler dans le composant App. Libre à vous de le renommer à souhait.
 On veut construire toute la structure HTML de notre "popup" dans [son état au chargement](./doc/design/1.%20Desktop.png).
@@ -422,6 +335,95 @@ L'intégration suivante est disponible sur la branche 'intégration'
 
   ```
   
+</details>
+
+### 4. Délimitation des composants et structuration de /src
+
+Nous allons réaliser ce projet en utilisant le couple React-Redux. De ce fait une architecture de dossier s'impose.
+Commençons par lister les composants globaux de notre exercice. Pour cela il faut comprendre qu'est-ce qui nécessite la création d'un composant ou non.
+Une approche possible est de diviser l'app en composant par zone "graphique"/sémantique. On peut aussi découper en composant par éléments répétés ou avec un contenu dynamique. Par exemple, un bouton que l'on retrouve à plusieurs endroits dans notre intégration pourrait être un composant, une zone qui utilise des données du state pourrait aussi être un composant.
+En bref, on serait capable de faire un composant pour un peu tout et n'importe quoi, c'est donc à vous de trouver votre découpage, celui qui vous convient.
+De plus, la première découpe n'est qu'indicatif et peut tout à fait évoluer au fur est à mesure que le projet avance.
+
+<details>
+  <summary>Possibilité de découpage des composants</summary>
+  J'ai choisi découper cette app en 4 composants :
+  ![](./doc/structure_schema/React.png)
+  
+- Un composant principal - *App* - qui se charge d'afficher soit l'interface de notage soit le message de succes
+- Le composant - *Review* - qui gère l'interface de notage
+- Le sous-composant - *Ratings* - qui s'occupe des boutons de note ainsi que celui de commentaire
+- Un composant - *Comment* - permettant l'affichage d'un textarea pour laisser un commentaire en plus d'une note
+- Et enfin le composant - *Succes* - qui affiche le message de succès.
+
+  ```bash
+    ├── components
+    │   ├── Comment
+    │   │   ├── index.js
+    │   │   └── styles.scss
+    │   ├── Ratings
+    │   │   ├── index.js
+    │   │   └── styles.scss
+    │   ├── App
+    │   │   ├── index.js
+    │   │   └── styles.scss
+    │   ├── Review
+    │   │   ├── index.js
+    │   │   └── styles.scss
+    │   └── Succes
+    │       ├── index.js
+    │       └── styles.scss
+  ```
+
+</details>
+
+Une fois les composants posés, on peut commencer la structure de notre projet React-Redux.
+Nous aurons besoin d'un dossier store, reducers, actions et un dernier dossier middlewares.
+
+<details>
+  <summary>Découpage complet</summary>
+  
+  ```bash
+    src
+    ├── actions
+    │   └── index.js
+    ├── assets
+    │   ├── favicon.ico
+    │   ├── fonts
+    │   │   └── Roboto-Regular.ttf
+    │   ├── images
+    │   │   └── done-sent.svg
+    │   └── index.html
+    ├── components
+    │   ├── Comment
+    │   │   ├── index.js
+    │   │   └── styles.scss
+    │   ├── Ratings
+    │   │   ├── index.js
+    │   │   └── styles.scss
+    │   ├── App
+    │   │   ├── index.js
+    │   │   └── styles.scss
+    │   ├── Review
+    │   │   ├── index.js
+    │   │   └── styles.scss
+    │   └── Succes
+    │       ├── index.js
+    │       └── styles.scss
+    ├── middlewares
+    │   ├── debug.js
+    │   └── submitReview.js
+    ├── reducers
+    │   └── index.js
+    ├── store
+    │   └── index.js
+    ├── styles
+    │    ├── index.scss
+    │    ├── _reset.css
+    │    └── _vars.scss
+    ├── index.js
+  ```
+
 </details>
 
 ### Bonus
