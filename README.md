@@ -1,7 +1,7 @@
 # Entrainement - Popup de notation
 
 ![Design preview](./doc/design/1.%20Desktop.png)
-#### **[Demo Live](https://matthieu-munoz.github.io/training_self-review/)**
+#### **[Demo Live](http://rating.matthieu-munoz.fr/)**
 
 ## Bienvenue ! 👋
 
