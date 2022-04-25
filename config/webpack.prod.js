@@ -16,6 +16,9 @@ module.exports = merge(common, {
     // Stats bundle
     new BundleStatsWebpackPlugin(),
   ],
+  output: {
+    publicPath: './',
+  },
   module: {
     rules: [
       {
@@ -27,7 +30,7 @@ module.exports = merge(common, {
           },
           {
             loader: 'css-loader',
-            options: { 
+            options: {
               sourceMap: true,
               importLoaders: 3,
               url: {

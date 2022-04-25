@@ -12,6 +12,9 @@ module.exports = merge(common, {
     // Recharge uniquement ce qu'il y a besoin
     new webpack.HotModuleReplacementPlugin(),
   ],
+  output: {
+    publicPath: '/',
+  },
   module: {
     rules: [
       // Styles
