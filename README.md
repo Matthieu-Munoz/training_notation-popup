@@ -1,19 +1,19 @@
 # Entrainement — Popup de notation
 
 ![Design preview](./doc/design/1.%20Desktop.png)
-### **[Demo Live](https://matthieu-munoz.github.io/training_self-review/)**
+### **[Démo Live](https://rating.matthieu-munoz.fr)**
 
 ## Bienvenue ! 👋
 
 Voici un exercice inspiré d'un challenge [Frontend Mentor](https://www.frontendmentor.io).
 
-**Pour réaliser cet exercice, vous aurez besoin de connaissances de base en HTML, CSS ( SCSS ) et JavaScript ( React/redux ).**
+**Pour réaliser cet exercice, vous aurez besoin de connaissances de base en HTML, CSS (SCSS) et JavaScript (React/redux).**
 
 ## "Tu me notes combien ?" :
 
 Cet exercice pourra vous être utile sur plusieurs projets !
 
-En effet, imaginons ce petit composant d'envoi d'avis sur votre portfolio, il sera accessible sous forme de popup par l'appui sur un bouton ou un événement déclencheur... L'utilisateur pourra ainsi envoyer son avis sous forme de note sur cinq avec l'option d'ajouter aussi un court message.
+En effet, imaginons ce petit composant d'envoi d'avis sur votre portfolio, il sera accessible sous forme de popup par l'appui sur un bouton ou un événement déclencheur… L'utilisateur pourra ainsi envoyer son avis sous forme de note sur cinq avec l'option d'ajouter aussi un court message.
 
 Cet exercice est prévu pour guider la réalisation de ce composant avec React et Sass. Libre à vous d'en faire ce que vous voulez !
 
@@ -22,12 +22,10 @@ Cet exercice est prévu pour guider la réalisation de ce composant avec React e
 |                    Vue globale                    |              Vue au survol et clic              |
 | :-----------------------------------------------: | :---------------------------------------------: |
 |        ![](./doc/design/1.%20Desktop.png)         | ![](./doc/design/2.%20Desktop%20-%20Active.png) |
-|               Vue commetaire actif                |              Confirmation d'envoi               |
+|               Vue commentaire actif               |              Confirmation d'envoi               |
 | ![](./doc/design/3.%20Desktop%20-%20Comments.png) | ![](./doc/design/4.%20Desktop%20-%20Thanks.png) |
 
-Vous trouverez également un fichier `style-guide.md` contenant les informations dont vous aurez besoin, telles que la palette de couleurs et les polices.
-
-Objectifs :
+### Objectifs :
 
 - L'utilisateur doit pouvoir choisir une note entre 1 et 5
   - Une note doit être sélectionnée pour exécuter l'envoi
@@ -36,18 +34,19 @@ Objectifs :
 - Suite à l'envoi, afficher un message de succès avec la note envoyée.
 
 Ici, nous gérons uniquement les fonctionnalités directes. L'objectif final et d'afficher en console.log la note laissé par l'utilisateur à l'envoi et potentiellement le commentaire.
-En cas réel, on pourrait imaginer l'envoi d'un mail contenant la note ainsi que le commentaire, ou bien de stocker tous les avis dans une base de données (utilisation posible d'une api)
+En cas réel, on pourrait imaginer l'envoi d'un mail contenant la note ainsi que le commentaire, ou bien de stocker tous les avis dans une base de données (utilisation possible d'une api)
 
 ## Initialisation du projet
 
 Cet exercice est livré avec un fichier package.json déjà rempli, toutes les dépendances utilisées y sont déjà configurées.
-Il vous reste dons à :
+
+Il vous reste donc à :
 
 1. Cloner ce repo
 2. Ouvrir un terminal dans le répertoire
 3. Faire un ```yarn```
-4. Ouvrir dans Vscode à partir du terminal avec un ```code . ```
-5. Pour démarrer le serveur de dev, faire un ```yarn start```
+4. Ouvrir dans VS Code à partir du terminal avec un ```code . ```
+5. Pour lancer le serveur de dev, faire un ```yarn start```
 
 ## Pas à pas
 
@@ -57,32 +56,33 @@ On commence par parcourir l'environnement de travail, les divers dossiers/fichie
 Les ressources à pointer sont :
 
 - Ce README
-- le fichier [style-guide](./style-guide.md)
-- les images du dossier doc/design
+- Le fichier [style-guide](./style-guide.md) contenant les informations dont vous aurez besoin, telles que la palette de couleurs et les polices.
+- Les images du dossier doc/design ainsi que la [Démo Live](https://rating.matthieu-munoz.fr) pour bien comprendre.
 - Le fichier package.json pour connaitre les dépendances installées. Je vous aide avec les quelques notables :
-  - classnames => Permet au besoin de conditionner une variable à destination d'un className. Très utile pour des styles différents en fonction d'une class/d'un état.
-  - react-autosize-textarea => Permet l'ajout d'un composant textarea "autosizeable". Plus d'infos [ici](https://github.com/buildo/react-autosize-textarea) et [là pour comprendre](https://react-components.buildo.io/#textareaautosize)
-  - react-icons => Donne accès à PLEIN d'icônes très facilement, [à consulter](https://react-icons.github.io/react-icons/)
-  - react-tooltip => Permet d'afficher et de paramétrer des petits tooltip très facilement. [doc](https://github.com/wwayne/react-tooltip#readme) et [demo](https://wwayne.github.io/react-tooltip/)
-  - react, react-dom, react-redux, redux, prop-types" => Pour des raisons évidentes
+  - classnames ⇒ Permet au besoin de conditionner une variable à destination d'un className. Très utile pour des styles différents en fonction d'une class/d'un état.
+  - react-autosize-textarea ⇒ Permet l'ajout d'un composant textarea "autosizeable". Plus d'infos [ici](https://github.com/buildo/react-autosize-textarea) et [là pour comprendre](https://react-components.buildo.io/#textareaautosize)
+  - react-icons ⇒ Donne accès à une multitude d'icônes très facilement, [à consulter](https://react-icons.github.io/react-icons/)
+  - react-tooltip ⇒ Permet d'afficher et de paramétrer des petits tooltip très facilement. [doc](https://github.com/wwayne/react-tooltip#readme) et [démo](https://wwayne.github.io/react-tooltip/)
+  - react, react-dom, react-redux, redux, prop-types" ⇒ Pour des raisons évidentes
 - La branche *intégration-HTML/SCSS* contenant une intégration "brut" possible dans le composant principal.
 - La branche *solution-matthieu* contenant une solution complète possible
 
 ### 2. "Par où je commence ?"
 
-C'est LA question que l'on se pose tous au démarrage d'un projet...
+C'est LA question que l'on se pose tous au démarrage d'un projet…
 Tout va dépendre de votre confort en HTML/JSX et CSS.
-Par exemple, il est tout à fait envisageable de commencer par travailler dans le fichier [index.js](./src/components/App/index.js) du composant principal ainsi que l'[index.scss](./src/styles/index.scss), y réaliser l'intégralité de l'intégration (sans les interactions JS) avant de venir tout découper dans les bons composants.
+Par exemple, il est tout à fait envisageable de commencer par travailler dans le fichier [index.js](./src/components/App/index.js) du composant principal ainsi que l'[index.scss](./src/styles/index.scss). On y réalise l'intégralité de l'intégration (sans les interactions JS) avant de venir tout découper dans les bons composants.
 C'est d'ailleurs la démarche que je vous conseille pour commencer et que j'expliquerai ensuite.
-Une autre approche, bien plus rapide mais qui demande beaucoup de rigueur et une compréhension assez avancée du chemin à prendre; c'est de directement coder dans les composants et fichier scss correspondant. L'idée là, c'est d'aller de l'extérieur le plus global vers l'intérieur progressivement.
+Une autre approche bien plus rapide, mais qui demande beaucoup de rigueur et une compréhension assez avancée du chemin à prendre ; c'est de directement coder dans les composants et fichier SCSS correspondant. L'idée là, c'est d'aller de l'extérieur le plus global vers l'intérieur progressivement.
 
 ### 3. HTML/SCSS
 
-C'est parti pour l'intégration !!!
+C'est parti pour l'intégration !
 
 #### 3.1 Direction les [styles "racines"](./src/styles)
 
-La première étape que je conseille c'est de consulter la charte graphique ou les docs objectifs pour vraiment prendre conscience du projet. Ici, on a en racine du repo un fichier [style-guide](./style-guide.md) contenant les styles utilisés pour la demo. On commence donc pas copier son contenu dans [_vars.scss](./src/styles/_vars.scss) pour le reformater en différentes variables sass qui seront utilisables à travers tout notre projet.
+La première étape que je conseille, c'est de consulter la charte graphique ou les docs objectifs pour vraiment prendre conscience du projet. Ici, on a en racine du repo un fichier [style-guide](./style-guide.md) contenant les styles utilisés pour la démo. 
+On va commencer par poser les différentes variables qui seront utiles et surtout utiliser pendant tout le projet. Ici, ça va être principalement des couleurs. POur cela, on va copier le contenu du [style-guide](./style-guide.md) dans [_vars.scss](./src/styles/_vars.scss) pour le reformater en différentes variables Sass qui seront utilisables à travers tout notre projet.
 
 ```scss
 // Exemple possible avec des couleurs
@@ -119,13 +119,12 @@ Libre à vous de jouer avec les couleurs !
 
 </details>
 
-On continue ensuite avec la mise en place de notre scss de base, celui qui englobe tout : [index.scss](./src/styles/index.scss)
-Cette feuille de style fait référence directe au fichier [index.html](./src/assets/index.html) et sera commun sur toute l'app. On va donc y mettre les styles de fond qui seront vrais partout.
+On continue ensuite avec la mise en place de notre SCSS de base, celui qui englobe tout : [index.scss](./src/styles/index.scss)
+Cette feuille de style fait référence directe au fichier [index.html](./src/assets/index.html) et sera commun sur toute l'app. C'est donc ici que l'on va écrire les styles de fond qui s'appliqueront sur toute notre app.
 Ici deux éléments à styliser : body et #root.
-On appliquera au body les propriétés de polices (sans oublier de les inclure à l'index.html de assets) et à #root un arrière-plan, une taille correspondante à la fenêtre et un centrage de ses éléments au centre.
+On appliquera au body les propriétés de polices (sans oublier de les inclure à l'index.html de assets) puis à #root un arrière-plan, une taille correspondante à la fenêtre ainsi qu'un centrage de ses éléments au centre.
 
-On obtient donc une page complètement grise (couleur de l'arrière-plan) et prête à recevoir notre composant App.
-
+La page que l'on obtient est complètement grise (couleur de l'arrière-plan) et prête à recevoir notre composant App qui se retrouvera au centre de notre page.
 <details>
   <summary>Solution possible pour le fichier index.scss</summary>
 
@@ -156,26 +155,26 @@ On obtient donc une page complètement grise (couleur de l'arrière-plan) et pr�
 Nous allons pour le moment travailler dans le composant App. Libre à vous de le renommer à souhait.
 On veut construire toute la structure HTML de notre "popup" dans [son état au chargement](./doc/design/1.%20Desktop.png).
 
-Un peu de préparation, prenez l'image fournie et poser dans votre tête ou sur papier la structure globale qu'aura votre html (éléments parent/enfant etc).
-Pour cela ou peut faire une schématisation par boite, chaque boite représente un élément, dans ces boites on peut en mettre d'autre qui représente leurs enfants.
+Un peu de préparation, prenez l'image fournie et poser dans votre tête ou sur papier la structure globale qu'aura votre HTML (éléments parents/enfants, etc).
+Pour cela ou peut faire une schématisation par boite, chaque boite représente un élément qui peuvent eux-mêmes en contenir d'autre qui représente leurs enfants.
 
 <details>
   <summary>Schéma proposé</summary>
 
   ![](./doc/structure_schema/HTML.png)
 
-  Avec un schéma comme celui-ci on devine très facilement à quoi ressemblera notre html. On voit même déjà apparaitre certaines propriétés CSS !
+  Avec un schéma comme celui-ci on devine très facilement à quoi ressemblera notre HTML. On voit même déjà apparaitre certaines propriétés CSS !
   Par exemple, l'élément global aura surement un `display: flex;` en colonne, de même celui des boutons de note un `display: flex;` et une répartition sur la longueur.
   
 </details>
 
 Une fois cette préparation effectuée, on se lance.
-On créait chaque élément html au bon endroit et on leur attribue une class. Le mieux c'est d'utiliser la convention BEM pour le nommage des class. Cela nous facilitera grandement la vie pour la mise en style Sass.
+On créait chaque élément HTML au bon endroit et on leur attribue une class. Le mieux c'est d'utiliser la convention BEM pour le nommage des class. Cela nous facilitera grandement la vie pour la mise en style Sass.
 
-Cette convention peut faire peur, voici un petit recap de comment l'utiliser :
+Cette convention peut faire peur, voici un petit récap de comment l'utiliser :
 
-- Chaque class prend la class de son parent séparé d'un '__'
-- Si une class est répété pour une modification on peut mettre un '--' entre
+- Chaque class prend la class de son parent et ajout un mot clé séparé d'un '__'
+- Si une class est répété pour une modification, on met un '--' entre
 
 exemple :
 
@@ -187,7 +186,7 @@ exemple :
   </div>
 ```
 
-Cette notation est assez lourde, on le voit bien là dans l'exemple avec le mot 'app' répété 4 fois !
+Cette notation est assez lourde, on le voit bien là dans l'exemple avec le mot 'app' est répété quatre fois !
 Vous pouvez prendre des libertés et tordre un peu la règle à votre avantage.
 L'intégration suivante est disponible sur la branche 'intégration'
 
@@ -219,13 +218,19 @@ L'intégration suivante est disponible sur la branche 'intégration'
       </div>
     </div>
   ```
-  
+
 </details>
+
+Ici on pose la forme, le contenu ne s'avère pas encore si important. Je vous conseille de quand même de garder des textes de proportion similaire voir directement les bons pour que la stylisation soit correcte.
+
+#### Petit aparté ~ Icône
+
+Sur notre application on voit deux icons, une étoile et une bulle de commentaire. Sur le web, il existe mille et une versions d'utiliser des icons, ici je vous propose d'en utiliser une très puissante disponible grâce à react-icons.
 
 <details>
   <summary>Avec le style correspondant</summary>
 
-  ```sCSS
+  ```SCSS
     @use 'src/styles/_vars.scss';
 
     .app {
@@ -343,8 +348,8 @@ L'intégration suivante est disponible sur la branche 'intégration'
 ### 4. Délimitation des composants et structuration de /src
 
 Nous allons réaliser ce projet en utilisant le couple React-Redux. De ce fait une architecture de dossier s'impose.
-Commençons par lister les composants globaux de notre exercice. Pour cela il faut comprendre qu'est-ce qui nécessite la création d'un composant ou non.
-Une approche possible est de diviser l'app en composant par zone "graphique"/sémantique. On peut aussi découper en composant par éléments répétés ou avec un contenu dynamique. Par exemple, un bouton que l'on retrouve à plusieurs endroits dans notre intégration pourrait être un composant, une zone qui utilise des données du state pourrait aussi être un composant.
+Commençons par lister les composants globaux de notre exercice. Pour cela, comprenons qu'est-ce qui nécessite la création d'un composant ou non.
+Une approche possible est de diviser l'app en composant par zone "graphique"/sémantique. On peut aussi découper en composant par éléments répétés ou avec un contenu dynamique. Par exemple, un bouton que l'on retrouve à plusieurs endroits dans notre intégration pourrait être un composant, une zone qui utilise des données du State pourrait aussi être un composant.
 En bref, on serait capable de faire un composant pour un peu tout et n'importe quoi, c'est donc à vous de trouver votre découpage, celui qui vous convient.
 
 *De plus, la première découpe n'est qu'indicatif et peut tout à fait évoluer au fur est à mesure que le projet avance.*
@@ -354,8 +359,8 @@ En bref, on serait capable de faire un composant pour un peu tout et n'importe q
 
 J'ai choisi découper cette app en 4 composants :
   
-- Un composant principal - *App* - qui se charge d'afficher soit l'interface de notage soit le message de succes
-- Le composant - *Review* - qui gère l'interface de notage
+- Un composant principal - *App* - qui se charge d'afficher, soit l'interface de notation, soit le message de succès
+- Le composant - *Review* - qui gère l'interface de notation
 - Le sous-composant - *Ratings* - qui s'occupe des boutons de note ainsi que celui de commentaire
 - Un composant - *Comment* - permettant l'affichage d'un textarea pour laisser un commentaire en plus d'une note
 - Et enfin le composant - *Succes* - qui affiche le message de succès.
