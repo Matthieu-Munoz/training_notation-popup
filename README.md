@@ -222,10 +222,128 @@ L'intégration suivante est disponible sur la branche 'intégration'
 </details>
 
 Ici on pose la forme, le contenu ne s'avère pas encore si important. Je vous conseille de quand même de garder des textes de proportion similaire voir directement les bons pour que la stylisation soit correcte.
+On note aussi l'utilisation d'une div temporaire pour l'icône étoile et d'un bouton vide pour le bouton commentaire. On se concentre sur l'intégration, on verra les icons après.
 
-#### Petit aparté ~ Icône
+Une fois le squelette, la structure posée, on peut commencer le style : le SCSS !
 
-Sur notre application on voit deux icons, une étoile et une bulle de commentaire. Sur le web, il existe mille et une versions d'utiliser des icons, ici je vous propose d'en utiliser une très puissante disponible grâce à react-icons.
+Le SCSS introduit le nesting. Vous voyez le schéma avec les boites proposé plus haut ? Eh bien, la même logique est applicable en SCSS.
+Si l'on reprend élément par élément notre HTML/JSX, on obtient une structure rapide pour notre SCSS. Elle sera peut-être à adapter ici est là, mais c'est une bonne base.
+
+Ainsi :
+
+```SCSS
+// J'ouvre l'ellement principal
+.app {
+  // TODO Ici ira le style lié à cette élément
+
+  // Ensuite on a l'élément de class review
+  .review{
+    // TODO Ici ira le style lié à cette élément
+
+    // De la même facon on contiue à descendre
+    // Dans .review, j'ai un header, un content, les ratings et un bouton. Donc :
+    .review__header {
+    // TODO Ici ira le style lié à cette élément
+    }
+    .review__content {
+            // TODO Ici ira le style lié à cette élément
+
+    }
+    .review__ratings {
+      // TODO Ici ira le style lié à cette élément
+
+      // On peut encore descendre avec les boutons de notation
+      .review__ratings__btn {
+
+      }
+
+    }
+    .review__submit {
+      // TODO Ici ira le style lié à cette élément
+    }
+  }
+}
+```
+
+Et là, on s'arrête, en tant que dev web, quelque chose devrait vous interpeller : on se répète un peu beaucoup non ?
+C'est pourquoi je conseille la combinaison BEM/SCSS, dès que l'on descend d'un cran, la class parente qui est répétée peut-être remplacée par un `&`.
+On obtient donc :
+
+```SCSS
+// J'ouvre le l'ellement principal
+.app {
+  // TODO Ici ira le style lié à cette élément
+
+  .review{
+    // TODO Ici ira le style lié à cette élément
+
+    &__header {
+      // TODO Ici ira le style lié à cette élément
+    }
+
+    &__content {
+      // TODO Ici ira le style lié à cette élément
+    }
+
+    &__ratings {
+      // TODO Ici ira le style lié à cette élément
+
+      &__btn {
+      // TODO Ici ira le style lié à cette élément
+      }
+    }
+    
+    &__submit {
+      // TODO Ici ira le style lié à cette élément
+    }
+  }
+}
+```
+
+Quelques tips :
+
+##### Le display: flex;
+
+C'est la propriété magique, vous voulez empiler plusieurs div en colonne, en repartir d'autre sur une ligne ou même juste centrer une image ou une icône ⇒ go `display: flex;`
+
+##### Les unités
+
+Une recommandation c'est d'utiliser :
+
+- Pour les largeurs/hauteurs ⇾ Des px, viewport ou %
+- Pour les border-radius, padding, margin ⇾ em ou rem
+- Les bordures en px
+- Tout ce qui touche au texte, c'est assez libre, car dépend du besoin
+
+##### Comment je centre horizontalement/verticalement ?
+
+- Avec un `display: flex;` et ses propriétés
+- Avec un `display: grid`; et un `place-content: center;`
+- Si le parent et l'enfant ont une largeur, un margin auto sur l'enfant pourrait le centrer
+
+##### Les devtools
+
+Abusé des devtools ! C'est très pratique de faire un style sur le navigateur directement puis de les mettre dans votre code.
+
+Attention, on travaille en hotReload (recharge automatique à la sauvegarde), donc si vous n'avez pas fini de copier tous les styles et que vous sauvegarder, vous risquez de perdre votre travail sur les devtools.
+Niveau préférence, bien que je préfère l'utilisation de Firefox, les devTools de Chrome sont plus agréables à l'utilisation.
+
+##### Les variables SASS
+
+À ne pas oublier, vous avez préparé des variables pour les couleurs, etc, donc utilisez-les !
+POur rappel :
+
+```SCSS
+// On importe le fichier des variables
+@use 'src/styles/_vars.scss';
+// pour utiliser une des variables du fichier, on utilise cette syntaxe
+.exemple {
+  background-color: vars.$nomVariable;
+}
+```
+
+Maintenant c'est à vous de jouer, encore et toujours, on commence par le style de l'élément principale App, une fois qu'il a la bonne forme, on descend d'un cran et ainsi de suite.
+Votre site va être moche avant d'atteindre la perfection, donc pas de panique.
 
 <details>
   <summary>Avec le style correspondant</summary>
@@ -234,7 +352,7 @@ Sur notre application on voit deux icons, une étoile et une bulle de commentair
     @use 'src/styles/_vars.scss';
 
     .app {
-      max-width: 412px;
+      width: 412px;
       min-height: 416px;
       background: vars.$gradient;
       display: flex;
@@ -436,6 +554,13 @@ Nous aurons besoin d'un dossier store, reducers, actions et un dernier dossier m
   ```
 
 </details>
+
+### 5. À vous de jouer
+
+#### Petit aparté ~ Icône
+
+Sur notre application on voit deux icons, une étoile et une bulle de commentaire. Sur le web, il existe mille et une versions d'utiliser des icons, ici je vous propose d'en utiliser une très puissante disponible grâce à react-icons.
+
 
 ### Bonus
 
