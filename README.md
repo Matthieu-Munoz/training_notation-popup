@@ -1,7 +1,8 @@
 # Entrainement - Popup de notation
 
 ![Design preview](./doc/design/1.%20Desktop.png)
-#### **[Demo Live](http://rating.matthieu-munoz.fr/)**
+
+#### **[Demo Live](http://rating.matthieu-munoz.fr)**
 
 ## Bienvenue ! 👋
 
@@ -9,7 +10,7 @@ Voici un exercice inspiré d'un challenge [Frontend Mentor](https://www.frontend
 
 **Pour réaliser cet exercice, vous aurez besoin de connaissances de base en HTML, CSS ( SCSS ) et JavaScript ( React ).**
 
-## C'est parti :
+## C'est parti
 
 Voici ma version de cet exercice
 
